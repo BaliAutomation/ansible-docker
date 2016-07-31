@@ -9,7 +9,6 @@
   service: name=docker state=started
 
 - name: Add --dns arguments
-  lineinfile: dest=/etc/sysconfig/docker state=present line="other_args=\"--dns 85.25.255.10 --dns 85.25.128.10\""
+  lineinfile: dest=/etc/sysconfig/docker state=present regexp="^OPTIONS=" line="OPTIONS=\"--selinux-enabled --log-driver=journald --dns 85.25.255.10 --dns 85.25.128.10\""
   notify:
     - restart docker
-
