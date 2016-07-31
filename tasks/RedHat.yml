@@ -2,13 +2,14 @@
 #- name: Downloading and enable the EPEL repository definitions.
 #  action: command rpm -Uvh --replacepkgs http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
 
-- name: Add --dns arguments
-  lineinfile: dest=/etc/sysconfig/docker state=present line="other_args=\"--dns 85.25.255.10 --dns 85.25.128.10\""
-  notify:
-    - restart docker
-
 - name: Install Docker
   yum: pkg=docker-io state=present
 
 - name: Start service
   service: name=docker state=started
+
+- name: Add --dns arguments
+  lineinfile: dest=/etc/sysconfig/docker state=present line="other_args=\"--dns 85.25.255.10 --dns 85.25.128.10\""
+  notify:
+    - restart docker
+
