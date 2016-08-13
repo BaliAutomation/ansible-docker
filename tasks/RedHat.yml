@@ -1,6 +1,6 @@
 ---
 - name: Downloading and enable the EPEL repository definitions.
-  action: command rpm -Uvh --replacepkgs https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+  action: command rpm -Uvh --replacepkgs https://dl.fedoraproject.org/pub/epel/7Server/x86_64/e/epel-release-7-8.noarch.rpm
 
 - name: Install Docker
   yum: pkg=docker-io state=present
